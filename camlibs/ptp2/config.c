@@ -9111,7 +9111,7 @@ _set_config (Camera *camera, const char *confname, CameraWidget *window, GPConte
 					ret = cursub->putfunc (camera, widget, NULL, NULL);
 				}
 				if (mode == MODE_SINGLE_SET)
-					return GP_OK;
+					return ret;
 			}
 			if (have_eos_prop(params,cursub->vendorid,cursub->propid)) {
 				PTPDevicePropDesc	dpd;
@@ -9140,7 +9140,7 @@ _set_config (Camera *camera, const char *confname, CameraWidget *window, GPConte
 					ret = cursub->putfunc (camera, widget, &propval, &dpd);
 				}
 				if (mode == MODE_SINGLE_SET)
-					return GP_OK;
+					return ret;
 			}
 			if (ret != GP_OK)
 				return ret;
@@ -9233,7 +9233,7 @@ _set_config (Camera *camera, const char *confname, CameraWidget *window, GPConte
 		ptp_free_devicepropvalue (dpd.DataType, &propval);
 		ptp_free_devicepropdesc (&dpd);
 		if (mode == MODE_SINGLE_SET)
-			return GP_OK;
+			return ret;
 	}
 	if (mode == MODE_SINGLE_SET) {
 		/* if we get here, we have not found anything */
